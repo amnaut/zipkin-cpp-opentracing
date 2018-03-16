@@ -24,9 +24,7 @@ ZipkinHttpTransporter::ZipkinHttpTransporter(const char *collector_host,
   headers_.append("Content-Type: application/json");
   rcode = curl_easy_setopt(handle_, CURLOPT_HTTPHEADER,
                            static_cast<curl_slist *>(headers_));
-  if (rcode != CURLE_OK) {
-    throw CurlError{rcode};
-  }
+
 
   curl_easy_setopt(handle_, CURLOPT_ERRORBUFFER, error_buffer_);
   if (rcode != CURLE_OK) {
